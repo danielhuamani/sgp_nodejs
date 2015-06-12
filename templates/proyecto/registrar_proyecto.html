@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container">
+        <div class="row">
+            <form action="" method="POST" class="col s10">
+                {% csrf_token %}
+                {{form.as_p}}
+                {{form.errors}}
+                <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                <i class="mdi-content-send right"></i>
+              </button>
+            </form>
+
+        </div>
+      </div>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+/* base */
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/* forms */
+
+.input-field {
+
+  label.chrome-active {
+    font-size: $label-font-size;
+    @include transform(translateY(-140%));
+  }
+
+  &.min-margin-bottom input {
+    margin-bottom: 5px;
+  }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.errorlist {
+    margin-top: 0;
+    font-size: .9rem;
+    @extend .red-text, .text-darken-1;
+}
+
+/* grid */
+
+.row-no-margin-bottom {
+  margin-bottom: 0
+}
+
+/* typografy */
+
+.header {
+  font-weight: 300;
+  font-size: 3rem;
+  @extend .red-text, .text-darken-2;
+}

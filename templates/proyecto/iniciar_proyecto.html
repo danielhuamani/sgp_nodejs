@@ -1,0 +1,51 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container">
+        <br> </br>
+
+        <div class="row">
+            <form method="POST" class="col s10 iniciar_proyecto">
+                {% csrf_token %}
+
+                <p>
+                    <label for="">{{ form_iniciar.nombre.label_tag }}</label>
+                    <!--{{form_iniciar.nombre}}-->
+                </p>
+
+                {{ form_iniciar.errors }}
+
+                <p>
+
+                    <select id="nombre" name="nombre">
+                        {%for proyecto in proyectos %}
+                        <option value="{{ proyecto.id }}">{{ proyecto.nombre }}</option>
+                        {%endfor%}
+                    </select>
+
+
+                    <label for="">{{form_iniciar.tipo.label_tag}}</label>
+                     <p>
+                    {% for radio in form_iniciar.tipo.field.choices %}
+                        <input type="radio" name="tipo" value="{{radio.0}}" id="test{{forloop.counter}}" />
+                        <label for="test{{forloop.counter}}">{{radio.1}}</label>
+                    {% endfor %}
+                     </p>
+
+                </p>
+
+                <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                <i class="mdi-content-send right"></i>
+                </button>
+            </form>
+
+        </div>
+      </div>
+
+{% endblock content %}
+
+{% block js %}
+
+
+{% endblock js %}

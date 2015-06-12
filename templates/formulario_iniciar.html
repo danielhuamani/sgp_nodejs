@@ -1,0 +1,33 @@
+<div class="pinned col s3 lado-derecho">
+  <form action="" method="POST" id="guardar_iniciar">
+    {% csrf_token %}
+    <div class="input-field col s12 iniciar_proyecto">
+
+      <select class="form_iniciar browser-default" name="nombre">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+      </select>
+
+      <p>
+        <input name="tipo" type="radio" value="N" id="test1" />
+        <label for="test1">Nuevo</label>
+      </p>
+      <p>
+        <input name="tipo" type="radio" value="C" id="test2" />
+        <label for="test2">Correccion</label>
+      </p>
+      <p>
+        <input name="tipo" type="radio" value="A" id="test3"  />
+        <label for="test3">Cambios</label>
+      </p>
+
+      <p class="mensaje_enviado"></p>
+      <button class="btn waves-effect waves-light"  type="submit" name="action">Iniciar
+      <i class="mdi-content-send right"></i>
+      </button>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<form action="#" method="post">
+    <legend>Registro</legend>
+    {% csrf_token %}
+    {% for field in form %}
+        <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        </div>
+    {% endfor %}
+
+    <button>Enviar</button>
+</form>
+
+<div class="extra">
+    <a href="{% url 'auth:login' %}">¿Ya tiene una cuenta?</a>
+</div>
+{% endblock content %}

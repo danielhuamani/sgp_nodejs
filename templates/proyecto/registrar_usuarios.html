@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container">
+        <br></br>
+        <div class="row">
+            <form action="" method="POST" class="col s10">
+                {% csrf_token %}
+                <p>
+                  {{form.email.label_tag}}
+                  {{form.email}}
+                  {{form.email.errors}}
+
+                </p>
+                <p>
+                  {{form.password.label_tag}}
+                  {{form.password}}
+                  {{form.email.errors}}
+                </p>
+                <p>
+                  {{form.area}}
+                  {{form.area.label_tag}}
+                  {{form.area.errors}}
+                </p>
+                <br>
+                <p>
+                  {{form.is_admin}}
+                  {{form.is_admin.label_tag}}
+                  {{form.email.errors}}
+                </p>
+
+                <br>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Guardar
+                <i class="mdi-content-send right"></i>
+              </button>
+            </form>
+
+        </div>
+      </div>
+
+{% endblock content %}

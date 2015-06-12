@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container">
+        <br> </br>
+        <div class="row">
+            <div class="l10">
+                <a href="{% url 'proyectos:registrar_proyecto'%}" class="waves-effect waves-light btn"><i class="mdi-content-add left"></i>Agregar Proyecto</a>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col s10">
+                <table class="striped">
+                    <thead>
+                      <tr>
+                          <th>Nro</th>
+                          <th>Proyecto</th>
+                          <th>Estado</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for proyecto in object_list %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td><a href="{{ proyecto.get_absolute_url }}">{{proyecto.nombre}}</a></td>
+                            <td>{{ proyecto.get_estado_display }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+
+{% endblock content %}
