@@ -9,6 +9,10 @@ server.engine('html', swig.renderFile);
 server.set('view engine', 'html');
 server.set('views', __dirname+ '/app/views');
 
+server.use(bodyParser.urlencoded({
+		extended : true
+}));
+server.use(bodyParser.json())
 //usamos el metodo static d e expres le pasamos la ruta
 server.use(express.static('./public'));
 

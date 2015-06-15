@@ -1,0 +1,79 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container">
+        <br> </br>
+        <div class="row">
+            <div class="col s11">
+                <table class="striped">
+                    <thead>
+                      <tr>
+                          <th>N</th>
+                          <th>Proyecto</th>
+                          <th>Usuario</th>
+                          <th>Area</th>
+                          <th>Inicio</th>
+                          <th>Fin</th>
+                          <td>Modificar</td>
+                      </tr>
+                    </thead>
+
+                    <tbody class="inicio_area">
+                        {% for proyecto in proyectoarea %}
+                        <tr class="proyectos">
+                            <input type="hidden" class="id" value="{{proyecto.id}}">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{proyecto.nombre}}</td>
+                            <td>{{proyecto.usuario}}</td>
+                            <td>{{proyecto.usuario.get_area_display}}</td>
+                            <td>{{ proyecto.inicio|date:"d/m/Y P" }}</td>
+                            <td>{% if proyecto.fin %}
+                              {{ proyecto.fin|date:"d/m/Y P" }}
+                              {% else %}
+                               <a class="get" href="">detener</a>
+                                <input type="hidden" class="detener" value="{{proyecto.id}}">
+                            {% endif %}</td>
+                            <td>{% if proyecto.fin %}<input type="text" value="" class="datetimepicker_mask modificar"/> <a class="get" href="">Modificar</a>{% else %}---{% endif %}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      </div>
+
+{% endblock content %}
+{% block js %}
+<script>
+$(document).ready(function() {
+  //codigo_ para modifcar el estado de proyecto por area
+var url_local = "{% url 'proyectos:proyecto_area'%}" ;
+  $(".inicio_area a.get").click(function(event) {
+    /* Act on the event */
+    event.preventDefault() ;
+    //se obtiene los valores de id , fecha , detener
+    valor_id = $(this).closest(".proyectos").find("input.id").val()
+    valor_fecha = $(this).parent().find("input.modificar").val()
+    valor_detener = $(this).parent().find("input.detener").val()
+    console.log(valor_fecha)
+    //se detiene solo para un caso si se modifica, o se pone fin
+    if (valor_detener) {
+      window.location.href = url_local+"?id="+valor_id+"&&detener="+valor_detener;
+    }
+    else{
+      if (valor_fecha) {
+      window.location.href = url_local+"?id="+valor_id+"&&fecha="+valor_fecha;
+      }
+      else{
+      window.location.href = url_local+"?id="+valor_id+"&&fecha="+"---";
+      }
+    };
+
+
+
+  });
+});
+</script>
+{% endblock js %}

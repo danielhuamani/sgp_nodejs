@@ -1,0 +1,40 @@
+{% extends '_base.html' %}
+
+{% block content %}
+
+      <div class="container pag_historial" id="pag_historial">
+        <br> </br>
+        <div class="row">
+            <div class="col s10">
+                <table class="striped">
+                    <thead>
+                      <tr>
+                          <th data-field="id">Nro</th>
+                          <th data-field="name">Proyecto</th>
+                          <th data-field="name">Tipo</th>
+                          <th data-field="name">Inicio</th>
+                          <th data-field="name">Fin</th>
+                          <th data-field="name">Horas trabajada</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for proyecto in historial %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ proyecto.nombre }}</td>
+                            <td>{{ proyecto.get_tipo_display }}</td>
+                            <td>{{ proyecto.inicio|date:'d/m/y P' }}</td>
+                            <td> {% if proyecto.fin %}{{ proyecto.fin|date:'P' }} {% else %} - {% endif %} </td>
+                            <td> {% if proyecto.total_minutos %}{{ proyecto.obtener_tiempo }} {% else %} - {% endif %} </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% include 'formulario_iniciar.html' %}
+
+        </div>
+      </div>
+
+{% endblock content %}
