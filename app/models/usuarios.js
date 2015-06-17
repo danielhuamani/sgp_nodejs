@@ -2,7 +2,7 @@ var mongoose = require('../connections/mongoose');
 
 var Schema = mongoose.Schema;
 
-var usuarioSchema = new Schema({
+var usuariosSchema = new Schema({
     
     usuario : {type : String, require : true},
     email : {type: String, require: true, index: {unique: true}},
@@ -11,5 +11,5 @@ var usuarioSchema = new Schema({
     
 })
 
-var Usuario = mongoose.model('usuario', usuarioSchema);
-module.exports = Usuario;
+var Usuarios = mongoose.model('usuarios', usuariosSchema);
+module.exports = Usuarios;
