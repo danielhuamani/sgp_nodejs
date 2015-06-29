@@ -5,20 +5,22 @@ var loginController = function(server){
     server.route('/')
         .get(function(req, res){
         res.render('auth/login');
-            
+
         })
         .post(function(req, res){
-        console.log(req.body.email)
+
             User.findOne({
                 email: req.body.email,
                 password: req.body.password },
                 function(err, user){
-                console.log(user.name)
+                
+            
                     if(user){
-                        console.log("usuario logueado")
+                        req.session.user = req.body.email;
+                        res.redirect('/iniciar-proyecto');
                     }
                     else{
-                        console.log("DDDDusuario logueado")
+                        res.render('auth/login',{ success : false, message : 'Error al loguearse' });
                     }
                 });
         })

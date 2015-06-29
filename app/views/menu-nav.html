@@ -7,13 +7,13 @@
 
         <ul class="right hide-on-med-and-down">
 
-          <li><a href="">{{detener}}</a></li>
-          <li><a href="{% url 'proyectos:detener_proyecto' %}">
+          <li><a href="">se detuvo</a></li>
+          <li><a href="">
            Detener
           </a></li>
 
-          <li><a href="#">{{ request.user.email }}</a></li>
-          <li><a href="{% url 'auth:logout' %}">Salir</a></li>
+          <li><a href="#">{{ user }}</a></li>
+          <li><a href="">Salir</a></li>
         </ul>
       </div>
     </nav>
@@ -21,51 +21,51 @@
 
 <div>
     <ul id="slide-out" class="side-nav">
-    {% if user.is_authenticated %}
-        {% if user.is_admin %}
-    <li><a href="{% url 'proyectos:registrar_usuario' %}">
+    {% if user %}
+        
+    <li><a href="">
         <i class="mdi-social-person"></i>
         <div class='inline-block'>Usuarios:nuevo</div>
     </a></li>
     
-    <li><a href="{% url 'proyectos:lista_usuario' %}">
+    <li><a href="">
         <i class="mdi-social-person"></i>
         <div class='inline-block'>Usuarios:lista</div>
     </a></li>
-    <li><a href="{% url 'proyectos:lista' %}">
+    <li><a href="">
         <i class="mdi-editor-border-color"></i>
         <div class='inline-block'>Proyectos</div>
     </a></li>
-    <li><a href="{% url 'proyectos:proyecto_area' %}">
+    <li><a href="">
         <i class="mdi-editor-border-color"></i>
         <div class='inline-block'>Inicio por Area</div>
     </a></li>
     <li>
-      <a href="{% url 'reportes:reportes' %}">
+      <a href="">
         <i class="mdi-editor-insert-drive-file"></i>
         <div class='inline-block'>Reportes</div>
       </a>
     </li>
-     {% endif %}
-    <li><a href="{% url 'proyectos:iniciar_proyecto' %}">
+    
+    <li><a href="}">
         <i class="mdi-navigation-refresh"></i>
         <div class='inline-block'>Iniciar Proyecto</div>
     </a></li>
 
-    <li><a href="{% url 'proyectos:historial_proyecto' %}">
+    <li><a href="">
         <i class="mdi-navigation-refresh"></i>
         <div class='inline-block'>Historial de Proyectos</div>
     </a></li>
 
     <li>
-      <a href="{% url 'reportes:exportar_excel' %}">
+      <a href="">
       <i class="mdi-file-file-download"></i>
       <div class='inline-block'>Exportar Excel</div>
       </a>
     </li>
 
       <li>
-      <a href="{% url 'proyectos:detener_proyecto' %}">Finalizar</a>
+      <a href="">Finalizar</a>
     </li>
     {% endif %}
   </ul>

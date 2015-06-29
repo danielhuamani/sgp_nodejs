@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        {% if request.user.is_authenticated %}
+        {% if user%}
             {% include 'menu-nav.html' %}
         {% endif %}
 
