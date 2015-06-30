@@ -1,13 +1,23 @@
 var loginMiddleware = function(req, res, next){
-    console.log("entro")
     if(req.session.user){
-        console.log("next");
+        
         next();
     }
     else{
-        console.log("noentro");
+        
         res.redirect("/");
     }
 };
+var logueadoMiddleware = function(req, res, next){
+    if(req.session.user){
+        
+        res.redirect('/iniciar-proyecto');
+    }
+    else{
+        
+        next();
+    }
+};
 
-module.exports = loginMiddleware
+exports.logueadoMiddleware = logueadoMiddleware
+exports.loginMiddleware = loginMiddleware
