@@ -16,7 +16,7 @@ var loginController = function(server){
                 function(err, user){              
             
                     if(user){
-                        console.log(user)
+                       
                         req.session.user = user;
                         res.redirect('/iniciar-proyecto');
                     }

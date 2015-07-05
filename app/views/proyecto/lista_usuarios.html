@@ -1,4 +1,4 @@
-{% extends '_base.html' %}
+{% extends '../_base.html' %}
 
 {% block content %}
 
@@ -6,7 +6,7 @@
         <br> </br>
         <div class="row">
             <div class="l10">
-                <a href="{% url 'proyectos:registrar_usuario'%}" class="waves-effect waves-light btn"><i class="mdi-content-add left"></i>Agregar Usuario</a>
+                <a href="/registrar-usuario" class="waves-effect waves-light btn"><i class="mdi-content-add left"></i>Agregar Usuario</a>
             </div>
             
         </div>
@@ -16,17 +16,21 @@
                     <thead>
                       <tr>
                           <th data-field="id">Nro</th>
-                          <th data-field="name">Email</th>
+                          <th data-field="nombre">Nombre</th>
+                          <th data-field="email">Email</th>
                       </tr>
                     </thead>
 
-                    <tbody>
-                        {% for proyecto in object_list %}
+                    <tbody class="agregar_listado_usuario">
+                       
+                        {% for usuario in lista_usuarios %}
                         <tr>
-                            <td>{{forloop.counter}}</td>
-                            <td><a href="{{ proyecto.get_absolute_url }}">{{proyecto.email}}</a></td>
+                            <td>{{loop.index}}</td>
+                            <td>{{usuario.usuario}}</td>
+                            <td><a href="">{{usuario.email}}</a></td>
                         </tr>
                         {% endfor %}
+                        
                     </tbody>
                 </table>
             </div>
@@ -34,3 +38,17 @@
       </div>
 
 {% endblock content %}
+{% block js %}
+<script src='js/socket.io.js'></script>
+<script>
+    $(document).ready(function() {
+        var socket = io();
+        socket.on('crearusuario', function(data){
+            var html = "<tr><td>"+"10"+"</td><td>"+data.usuario+"</td><td><a href=''>"+data.email+"</a></td></tr>"
+        
+            $(".agregar_listado_usuario").prepend(html)
+                    
+        });
+    });
+</script>
+{% endblock js %}
