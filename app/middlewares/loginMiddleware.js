@@ -9,6 +9,7 @@ var loginMiddleware = function(req, res, next){
     }
 };
 var logueadoMiddleware = function(req, res, next){
+    console.log(req)
     if(req.session.user){
         
         res.redirect('/iniciar-proyecto');

@@ -9,7 +9,7 @@ var loginController = function(server){
                 
         })
         .post(function(req, res){
-
+            console.log(req.body)
             User.findOne({
                 email: req.body.email,
                 password: req.body.password },
